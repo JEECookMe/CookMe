@@ -36,7 +36,7 @@ public class Servlet1 extends HttpServlet {
         // TODO écrire la liste des utilisateurs dans le flux de réponse HttpServletResponse }
     	PrintWriter wr= response.getWriter();
     	for(UserModel u : db.getData()){
-    		wr.println(u+"<br/>");
+    		wr.println(u);
     	}
         
     }

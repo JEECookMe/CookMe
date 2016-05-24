@@ -1,4 +1,4 @@
-package step1.db;
+package step2.db;
 
 import step1.model.UserModel;
 
