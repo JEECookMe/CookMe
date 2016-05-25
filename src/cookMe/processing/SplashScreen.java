@@ -1,20 +1,29 @@
 package cookMe.processing;
 
-import javax.faces.bean.ApplicationScoped;
+import java.io.Serializable;
+
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 @ManagedBean
-@ApplicationScoped
-public class SplashScreen {
+@ViewScoped
+public class SplashScreen implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private boolean renderDone;
 	
+	@PostConstruct
 	public void renderLotOfData() {
 	    renderDone = false;
-	    try {
-			Thread.sleep(5);
+	    System.out.println("deb");
+	    /*try {
+			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		}
+		}*/
+	    for(int i=0;i<10000;i++){System.out.println(i);}
+	    System.out.println("fin");
 	    renderDone = true;
 	  }
 

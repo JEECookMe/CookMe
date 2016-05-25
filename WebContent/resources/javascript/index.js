@@ -1,13 +1,11 @@
-$( document ).ready(function() {
-	showMySplash();
-});
+showMySplash();
 
 function showMySplash(){
-	
+	$('#splashScreen').show();
 }
 
 function hideMySplash(){
-	
+	$('#splashScreen').hide();
 }
 
 function renderDoneBlockUi() {

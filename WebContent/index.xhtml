@@ -3,16 +3,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <head>
 	<title>CookMe !</title>
-	<h:outputScript library="js" name="resources/javascript/jquery-2.2.4.min.js" />
-	<h:outputScript library="js" name="resources/javascript/index.js" />
+	<h:outputScript library="javascript" name="jquery-2.2.4.min.js" />
+	<h:outputScript library="javascript" name="index.js" />
 </head>
 <body>
-	<div id="">
+	<div id="splashScreen">
+		<h:graphicImage value="/resources/images/cookme.png" />
 	</div>
-	<h:inputHidden value="#{myBean.renderDone}" id="renderDone" />
-	<p:remoteCommand name="checkRenderDone" update="renderDone" actionListener="#{myBean.renderDone}" autoRun="true" oncomplete="renderDoneBlockUi" />
+	<h:form>
+		<h:inputHidden value="#{splashScreen.renderDone}" id="renderDone" />
+		<p:remoteCommand name="checkRenderDone" update="renderDone" actionListener="#{splashScreen.renderDone}" autoRun="true" oncomplete="renderDoneBlockUi" />	
+	</h:form>
 </body>
 </html>
