@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>Recipe Search</title>
+</head>
+<body>
+	<h1>Search Recipe</h1>
+	<h:form>
+		<table border="0">
+			<tr>
+				<td>Type</td>
+				<td>
+					<h:inputText id="recipeType" value="#{recipeSubmissionModelBean.type}" required="true"></h:inputText>
+				</td>
+			</tr>
+			<tr>
+				<td>Duration</td>
+				<td>
+					<h:inputText id="recipeDuration" value="#{recipeSubmissionModelBean.duration}" required="true"></h:inputText>
+				</td>
+			</tr>
+			<tr>
+				<td>Expertise</td>
+				<td>
+					<h:inputText id="recipeExpertise" value="#{recipeSubmissionModelBean.expertise}" required="true"></h:inputText>
+				</td>
+			</tr>
+			<tr>
+				<td>Nb people</td>
+				<td>
+					<h:inputText id="recipeNbPeople" value="#{recipeSubmissionModelBean.nbpeople}" required="true"></h:inputText>
+				</td>
+			</tr>
+			
+			<tr>
+				<td></td>
+				<td>
+					<h:commandButton value="OK" action="#{recipeControlerBean.searchRecipe(recipeSubmissionModelBean)}" />
+				</td>
+			</tr>
+		</table>
+	</h:form>
+</body>
+</html>
