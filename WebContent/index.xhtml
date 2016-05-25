@@ -5,9 +5,13 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 <head>
-<title>CookMe !</title>
+	<title>CookMe !</title>
+	<h:outputScript library="js" name="resources/javascript/jquery-2.2.4.min.js" />
+	<h:outputScript library="js" name="resources/javascript/index.js" />
 </head>
 <body>
+	<div id="">
+	</div>
 	<h:inputHidden value="#{myBean.renderDone}" id="renderDone" />
 	<p:remoteCommand name="checkRenderDone" update="renderDone" actionListener="#{myBean.renderDone}" autoRun="true" oncomplete="renderDoneBlockUi" />
 </body>
