@@ -1,4 +1,8 @@
-$( document ).ready()
+$( document ).ready(function (){
+	//showMySplash();
+	//setTimeout(hideMySplash(), 5000);
+	$('#splashScreen').delay(5000);
+});
 
 //showMySplash();
 
