@@ -3,7 +3,7 @@ package step5.processing;
 import java.util.ArrayList;
 import java.util.Map;
 
-import javax.annotation.ManagedBean;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -12,6 +12,7 @@ import step5.dao.fabric.DaoFabric;
 import step5.dao.instance.RecipesDao;
 import step5.model.RecipeListModelBean;
 import step5.model.RecipeModel;
+import step5.model.RecipeSubmissionModelBean;
 
 @ManagedBean
 @ApplicationScoped
@@ -41,7 +42,7 @@ public class RecipeControlerBean {
 		return "successfulRegister.xhtml";
 	}
 
-	public String searchRecipe(RecipeModel recipe) {
+	public String searchRecipe(RecipeSubmissionModelBean recipe) {
 		
 		RecipeListModelBean list  = new RecipeListModelBean(); 
 		for (RecipeModel r : this.recipeDao.getAllRecipes()) {
