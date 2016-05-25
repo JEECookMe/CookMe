@@ -1,4 +1,6 @@
-showMySplash();
+$( document ).ready()
+
+//showMySplash();
 
 function showMySplash(){
 	$('#splashScreen').show();

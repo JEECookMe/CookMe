@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:f="http://java.sun.com/jsf/core">
 <head>
 	<title>CookMe !</title>
 	<h:outputScript library="javascript" name="jquery-2.2.4.min.js" />
@@ -14,9 +13,5 @@
 	<div id="splashScreen">
 		<h:graphicImage value="/resources/images/cookme.png" />
 	</div>
-	<h:form>
-		<h:inputHidden value="#{splashScreen.renderDone}" id="renderDone" />
-		<p:remoteCommand name="checkRenderDone" update="renderDone" actionListener="#{splashScreen.renderDone}" autoRun="true" oncomplete="renderDoneBlockUi" />	
-	</h:form>
 </body>
 </html>

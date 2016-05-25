@@ -22,7 +22,7 @@ public class SplashScreen implements Serializable {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}*/
-	    for(int i=0;i<10000;i++){System.out.println(i);}
+	    for(int i=0;i<999999;i++){System.out.println(i);}
 	    System.out.println("fin");
 	    renderDone = true;
 	  }
