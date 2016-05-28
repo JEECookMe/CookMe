@@ -9,11 +9,14 @@
 	<title>CookMe !</title>
 	<h:outputScript library="javascript" name="jquery-2.2.4.min.js" />
 </h:head>
-<body>
-	<h:form>
-		<h:button value="Emergency" outcome="emergency.xhtml" />
-		<h:button value="Recipes" outcome="recipes.xhtml" />
-		<h:button value="Shop" outcome="shop.xhtml" />
-	</h:form>
-</body>
+<h:body>
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+					xmlns:ui="http://java.sun.com/jsf/facelets"
+					xmlns:h="http://java.sun.com/jsf/html"
+					xmlns:f="http://java.sun.com/jsf/core"
+					xmlns:p="http://primefaces.org/ui"
+					template="/template/main.xhtml">
+			
+	</ui:composition>
+</h:body>
 </html>
