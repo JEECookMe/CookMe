@@ -14,9 +14,17 @@
 					template="/template/main_cf.xhtml">
 			<ui:define name="content">
 				<h:form>
-					<h:button value="Emergency" outcome="emergency.xhtml" />
-					<h:button value="Recipes" outcome="recipes.xhtml" />
-					<h:button value="Shop" outcome="shop.xhtml" />
+					<div id="homeMenu">
+						<div class="homeElt">
+							<h:button value="Emergency" outcome="emergency.xhtml"/>
+						</div>
+						<div class="homeElt">
+							<h:button value="Recipes" outcome="recipes.xhtml" />
+						</div>
+						<div class="homeElt">
+							<h:button value="Shop" outcome="shop.xhtml" />
+						</div>
+					</div>
 				</h:form>
 			</ui:define>
 	</ui:composition>

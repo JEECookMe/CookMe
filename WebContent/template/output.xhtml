@@ -5,10 +5,11 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-	
-<ui:include src="/template/output.xhtml"/>
-
-<h:body>
-	<ui:include src="/template/content.xhtml"/>
-</h:body>
+<h:head>
+	<title><ui:insert name="titlePage">CookMe</ui:insert></title>
+	<h:outputScript library="javascript" name="jquery-2.2.4.min.js" />
+	<h:outputScript library="javascript" name="main.js" />
+	<h:outputStylesheet library="css" name="main.css" />
+	<ui:insert name="output"></ui:insert>
+</h:head>
 </html>

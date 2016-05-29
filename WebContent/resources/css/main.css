@@ -28,3 +28,11 @@ body {
 	top: 50%;
 	transform: translateY(-50%);
 }
+
+#homeMenu {
+	display: inline-block;
+}
+
+.homeElt {
+	margin: 50px;
+}
