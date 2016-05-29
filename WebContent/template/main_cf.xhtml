@@ -5,9 +5,12 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-	<h:body>
-		<ui:composition>
-			<ui:insert name="content"></ui:insert>
-		</ui:composition>
-	</h:body>
+<h:head>
+	<title><ui:insert name="titlePage">CookMe</ui:insert></title>
+	<h:outputStylesheet library="css" name="main.css" />
+</h:head>
+<h:body>
+	<ui:include src="/template/content.xhtml"/>
+	<ui:include src="/template/footer.xhtml"/>
+</h:body>
 </html>
