@@ -30,9 +30,22 @@ body {
 }
 
 #homeMenu {
-	display: inline-block;
+    width:100%;
+    text-align:center;
 }
 
-.homeElt {
-	margin: 50px;
+#homeEltLeft {
+    float:left;
+    width:100px;
+}
+
+#homeEltCenter {
+    display: inline-block;
+    margin:0 auto;
+    width:100px;
+}
+
+#homeEltRight {
+    float:right;
+    width:100px;
 }
