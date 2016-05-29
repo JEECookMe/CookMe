@@ -16,13 +16,19 @@
 				<h:form>
 					<div id="homeMenu">
 						<div class="homeElt">
-							<h:button value="Emergency" outcome="emergency.xhtml"/>
+							<h:commandLink action="emergency.xhtml">
+								<h:graphicImage library="images" name="emergency.jpg" width="250" height="400" />
+							</h:commandLink>
 						</div>
 						<div class="homeElt">
-							<h:button value="Recipes" outcome="recipes.xhtml" />
+							<h:commandLink action="recipes.xhtml">
+								<h:graphicImage library="images" name="recipes.jpg" width="250" height="400" />
+							</h:commandLink>
 						</div>
 						<div class="homeElt">
-							<h:button value="Shop" outcome="shop.xhtml" />
+							<h:commandLink action="shop.xhtml">
+								<h:graphicImage library="images" name="shop.jpg" width="250" height="400" />
+							</h:commandLink>
 						</div>
 					</div>
 				</h:form>
