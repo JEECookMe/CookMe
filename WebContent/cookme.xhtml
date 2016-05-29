@@ -5,20 +5,22 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<title>CookMe !</title>
-	<h:outputScript library="javascript" name="jquery-2.2.4.min.js" />
-	<h:outputScript library="javascript" name="cookme.js" />
-	<h:outputStylesheet library="css" name="cookme.css" />
-</h:head>
-<body>
-	<div id="splashScreen">
-		<div id="logo">
-			<h:graphicImage library="images" name="cookme.png" />
-		</div>
-		<div id="loading">
-			<h:graphicImage library="images" name="loading.gif" width="200" />
-		</div>
-	</div>
-</body>
+	
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+					xmlns:ui="http://java.sun.com/jsf/facelets"
+					xmlns:h="http://java.sun.com/jsf/html"
+					xmlns:f="http://java.sun.com/jsf/core"
+					xmlns:p="http://primefaces.org/ui"
+					template="/template/main_c.xhtml">
+			<ui:define name="content">
+				<div id="splashScreen">
+					<div>
+						<h:graphicImage library="images" name="cookme.png" />
+					</div>
+					<div>
+						<h:graphicImage library="images" name="loading.gif" width="200" />
+					</div>
+				</div>
+			</ui:define>
+	</ui:composition>
 </html>

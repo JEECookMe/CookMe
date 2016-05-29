@@ -2,7 +2,7 @@ $( document ).ready(function (){
 	startSplash();
 	window.setTimeout(function(){
 		finishSplash();
-	}, 5000);
+	}, 3000);
 });
 
 function startSplash(){
