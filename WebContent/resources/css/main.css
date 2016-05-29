@@ -1,5 +1,30 @@
+body {
+	margin: 0px;
+}
+
 #splashScreen {
 	text-align: center;
 	margin-top: 50vh;
+	transform: translateY(-50%);
+}
+
+#footer {
+	position:absolute;
+	bottom:0;
+	width:100%;
+	padding-top:50px;
+}
+
+#footerCopyright {
+	margin-left: 10px;
+	float: left;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+#footerLogo {
+	float: right;
+	margin-right: 10px;
+	top: 50%;
 	transform: translateY(-50%);
 }
