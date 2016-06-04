@@ -21,55 +21,57 @@
 						</h:commandLink>
 					</h:form>
 				</div>
-				<div id="headerRight">	
-					<ui:fragment rendered="#{empty loggedUser}">
-						<div id="headerRegistration">
-							<h:form>
-								<h:commandLink action="registration.xhtml">
-									<p:button value="+"/>
-								</h:commandLink>
-								<p:outputLabel>Become member</p:outputLabel>
-							</h:form>
-						</div>
-						<div id="headerConnection">
+				<div id="headerRight">
+					<h:panelGroup id="headerLoginBlock">
+						<h:panelGroup rendered="#{empty loggedUser}">
+							<div id="headerRegistration">
 								<h:form>
-									<p:growl id="growlLogin" showDetail="true"/>
-									<div class="headerEltForm">
-										<p:inputText id="headerEltLogin" placeholder="Login" value="#{loginBean.login}" required="true"
-										 requiredMessage="Le champ login doit être renseigné" >
-											<f:validator validatorId="validator.login"/>
-										</p:inputText>
-										<p:tooltip for="headerEltLogin" value="autorisé [a-zA-Z0-9-._]" position="top" />
-										<p:message for="headerEltLogin" display="tooltip" />
-									</div>
-									<div class="headerEltForm">
-										<p:password id="headerEltPassword" placeholder="Password" value="#{loginBean.pwd}" required="true"
-										 requiredMessage="Le champ password doit être renseigné" />
-										<p:tooltip for="headerEltPassword" value="Entrez votre mot de passe" position="top" />
-									</div>
-									<div id="headerSubmit" class="headerEltForm">
-										<p:commandButton value="=>" action="#{userControlerBean.checkUser(loginBean)}" process="@form" update="@form">
-											<f:ajax execute="@form" />
-										</p:commandButton>
-									</div>
+									<h:commandLink action="registration.xhtml">
+										<p:button value="+"/>
+									</h:commandLink>
+									<p:outputLabel>Become member</p:outputLabel>
 								</h:form>
-						</div>
-					</ui:fragment>
-					<ui:fragment rendered="#{not empty loggedUser}">
-						<h:form>
-							<div class="headerEltForm">
-								<h:outputText value="Welcome #{loggedUser.login}" />
 							</div>
-							<div class="headerEltForm">
-								<h:outputText value="#{userControlerBean.loggedUserCounter} connectés" />
+							<div id="headerConnection">
+									<h:form>
+										<p:growl id="growlLogin" showDetail="true"/>
+										<div class="headerEltForm">
+											<p:inputText id="headerEltLogin" placeholder="Login" value="#{loginBean.login}" required="true"
+											 requiredMessage="Le champ login doit être renseigné" >
+												<f:validator validatorId="validator.login"/>
+											</p:inputText>
+											<p:tooltip for="headerEltLogin" value="autorisé [a-zA-Z0-9-._]" position="top" />
+											<p:message for="headerEltLogin" display="tooltip" />
+										</div>
+										<div class="headerEltForm">
+											<p:password id="headerEltPassword" placeholder="Password" value="#{loginBean.pwd}" required="true"
+											 requiredMessage="Le champ password doit être renseigné" />
+											<p:tooltip for="headerEltPassword" value="Entrez votre mot de passe" position="top" />
+										</div>
+										<div id="headerSubmit" class="headerEltForm">
+											<p:commandButton value="Go" action="#{userControlerBean.checkUser(loginBean)}" update="@form" >
+												<f:ajax execute="@form" render=":headerLoginBlock" />
+											</p:commandButton>
+										</div>
+									</h:form>
 							</div>
-							<div class="headerEltForm">
-								<p:commandButton value="=>" action="#{userControlerBean.logout}" process="@form" update="@form">
-									<f:ajax execute="@form" />
-								</p:commandButton>
-							</div>
-						</h:form>
-					</ui:fragment>
+						</h:panelGroup>
+						<h:panelGroup rendered="#{not empty loggedUser}">
+							<h:form>
+								<div>
+									<h:outputText value="Welcome #{loggedUser.login}" />
+								</div>
+								<div>
+									<h:outputText value="#{userControlerBean.loggedUserCounter} connectés" />
+								</div>
+								<div>
+									<p:commandButton value="Logout" action="#{userControlerBean.logout}" update="@form">
+										<f:ajax execute="@form" render=":headerLoginBlock" />
+									</p:commandButton>
+								</div>
+							</h:form>
+						</h:panelGroup>
+					</h:panelGroup>
 				</div>
 			</div>
 		</ui:composition>

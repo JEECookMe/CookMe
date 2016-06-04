@@ -26,7 +26,7 @@ public class AgeValidator implements Validator, ClientValidator {
 
 	  if (Integer.parseInt(age) <= 0 || Integer.parseInt(age) > 100) {
 		throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erreur d'age", 
-                "L'age saisi n'est pas valide, il ne doit pas dépasser 100 et ne doit pas contenir des lettres"));
+                "L'age saisi n'est pas valide, il doit être superieur à 0, ne doit pas dépasser 100 et ne doit pas contenir des lettres"));
 	  }
 
 	}

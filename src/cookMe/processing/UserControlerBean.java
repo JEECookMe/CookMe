@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -26,7 +27,7 @@ public class UserControlerBean {
 		loggedUserCounter = 0;
 	}
 
-	public String checkUser(LoginBean loginBean) {
+	public void checkUser(LoginBean loginBean) {
 		UserModelBean user = this.userDao.checkUser(loginBean.getLogin(), loginBean.getPwd());
 		if (user != null) {
 
@@ -34,10 +35,14 @@ public class UserControlerBean {
 			Map<String, Object> sessionMap = externalContext.getSessionMap();
 			sessionMap.put("loggedUser", user);
 			loggedUserCounter++;
-			
-			return "userdisplay.xhtml";
+
+			FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Connexion", "Connexion réussie");
+	        FacesContext.getCurrentInstance().addMessage("msg", facesMsg);
+			//return "userdisplay.xhtml";
 		} else {
-			return "userLogin.xhtml";
+			FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Echec de connexion", "Les identifiants saisies sont incorrects");
+	        FacesContext.getCurrentInstance().addMessage("msg", facesMsg);
+			//return "userLogin.xhtml";
 		}
 	}
 
@@ -71,7 +76,9 @@ public class UserControlerBean {
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
 		sessionMap.put("loggedUser", null);
-		loggedUserCounter--;
+		if(loggedUserCounter>0){
+			loggedUserCounter--;
+		}
 	}
 
 	public int getLoggedUserCounter() {
