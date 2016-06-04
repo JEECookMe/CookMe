@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+					xmlns:ui="http://java.sun.com/jsf/facelets"
+					xmlns:h="http://java.sun.com/jsf/html"
+					xmlns:f="http://java.sun.com/jsf/core"
+					xmlns:p="http://primefaces.org/ui"
+					template="/template/main_hcf.xhtml">
+			<ui:define name="titlePage">Registration</ui:define>
+			<ui:define name="content">
+				<p:fieldset id="panel" legend="Registration">
+					<h:form>
+						<p:growl showDetail="true"/>
+						<h:panelGrid columns="4">
+							<h:outputLabel for="firstName" value="First Name:" />
+							<p:inputText id="firstName" placeholder="First Name" value="#{userSubmissionModelBean.firstName}" required="true"
+							 requiredMessage="Le champ firstname doit être renseigné" >
+								<f:validator validatorId="validator.firstname"/>
+							</p:inputText>
+							<p:tooltip for="firstName" value="autorisé [a-zA-Z0-9]" position="top" />
+							<p:message for="firstName" display="tooltip" />
+							
+							<h:outputLabel for="lastName" value="Last Name:" />
+							<p:inputText id="lastName" placeholder="Last Name" value="#{userSubmissionModelBean.lastName}" required="true"
+							 requiredMessage="Le champ lastname doit être renseigné" >
+								<f:validator validatorId="validator.lastname"/>
+							</p:inputText>
+							<p:tooltip for="lastName" value="autorisé [a-zA-Z0-9]" position="top" />
+							<p:message for="lastName" display="tooltip" />
+							
+							<h:outputLabel for="age" value="Age:" />
+							<p:inputText id="age" placeholder="Age" value="#{userSubmissionModelBean.age}" required="true"
+							 requiredMessage="Le champ age doit être renseigné" >
+								<f:validator validatorId="validator.age"/>
+							</p:inputText>
+							<p:tooltip for="age" value="uniquement des entiers &lt;100" position="top" />
+							<p:message for="age" display="tooltip" />
+							
+							<h:outputLabel for="email" value="Email Address:" />
+							<p:inputText id="email" placeholder="Email Address" value="#{userSubmissionModelBean.email}" required="true"
+							 requiredMessage="Le champ email doit être renseigné" >
+								<f:validator validatorId="validator.email"/>
+							</p:inputText>
+							<p:tooltip for="email" value="autorisé [a-zA-Z0-9-._]+@[a-zA-Z0-9-._].[a-z]+" position="top" />
+							<p:message for="email" display="tooltip" />
+							
+							<h:outputLabel for="login" value="Login:" />
+							<p:inputText id="login" placeholder="Login" value="#{userSubmissionModelBean.login}" required="true"
+							 requiredMessage="Le champ login doit être renseigné" >
+								<f:validator validatorId="validator.login"/>
+							</p:inputText>
+							<p:tooltip for="login" value="autorisé [a-zA-Z0-9-._]" position="top" />
+							<p:message for="login" display="tooltip" />
+							
+							<h:outputLabel for="password" value="Password:" />
+							<p:password id="password" placeholder="Password" feedback="true"
+										promptLabel="Entrez un mot de passe" weakLabel="Faible"
+										goodLabel="Moyen" strongLabel="Fort" inline="true"
+										value="#{userSubmissionModelBean.pwd}" required="true"
+										 requiredMessage="Le champ password doit être renseigné" >
+								<f:validator validatorId="validator.pwd"/>
+								<f:attribute name="confirmPassword" value="#{confirmPassword}" />
+							</p:password>
+							<p:tooltip for="password" value="identique à Re-enter Password" position="top" />
+							<p:message for="password" display="tooltip" />
+							
+							<h:outputLabel for="repassword" value="Re-enter Password:" />
+							<p:password id="repassword" placeholder="Re-enter Password" value="#{userSubmissionModelBean.repwd}"
+							binding="#{confirmPassword}" required="true" requiredMessage="Le champ re-password doit être renseigné" />
+							<p:tooltip for="repassword" value="identique à Password" position="top" />
+							<p:message for="repassword" display="tooltip" />
+							
+							<p:commandButton value="Cancel" onclick="history.go(-1)" />
+							<p:commandButton value="Register" action="#{userControlerBean.checkAndAddUser(userSubmissionModelBean)}" process="@form"
+							icon="ui-icon-check" validateClient="true" update="panel" />
+						</h:panelGrid>
+					</h:form>
+				</p:fieldset>
+			</ui:define>
+	</ui:composition>
+		
+</html>

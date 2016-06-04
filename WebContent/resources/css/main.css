@@ -51,3 +51,30 @@ body {
 	margin-right: 100px;
 	margin-top: 100px;
 }
+
+#headerRight{
+	float:right;
+}
+
+#headerLogo {
+	display: inline-block;
+}
+
+#headerRegistration {
+	display: inline-block;
+	vertical-align: top;
+	margin: 10px;
+}
+
+#headerConnection {
+	display: inline-block;
+	margin: 10px;
+}
+
+#headerSubmit {
+	float: right;
+}
+
+.headerEltForm {
+	margin-bottom: 10px;
+}

@@ -1,16 +1,16 @@
-package step5.dao.fabric;
+package cookMe.dao.fabric;
 
-import step5.dao.instance.RecipesDao;
-import step5.dao.instance.UserDao;
+import cookMe.dao.instance.RecipesDao;
+import cookMe.dao.instance.UserDao;
 
 public final class DaoFabric {
 
 	private static volatile DaoFabric instance = null;
-	private static final String DB_HOST = "db-tp.cpe.fr";
+	private static final String DB_HOST = "localhost";
 	private static final String DB_PORT = "3306";
-	private static final String DB_NAME = "binome01";
-	private static final String DB_USER = "binome01";
-	private static final String DB_PWD = "binome01";
+	private static final String DB_NAME = "jee";
+	private static final String DB_USER = "root";
+	private static final String DB_PWD = "admin";
 
 	private DaoFabric() {
 		super();
@@ -48,9 +48,9 @@ public final class DaoFabric {
 		return userDao;
 	}
 
-	public RecipesDao createRecipesDao() {
+	/*public RecipesDao createRecipesDao() {
 		RecipesDao receipesDao = new RecipesDao(this.DB_HOST, this.DB_PORT,
 				this.DB_NAME, this.DB_USER, this.DB_PWD);
 		return receipesDao;
-	}
+	}*/
 }

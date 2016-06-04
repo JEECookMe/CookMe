@@ -1,40 +1,47 @@
-package step5.model;
+package cookMe.model;
 
 import java.io.Serializable;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ApplicationScoped;
+
+@ManagedBean
+@ApplicationScoped
 public class UserModelBean implements Serializable {
-	private String lastname;
-	private String surname;
+	private String firstName;
+	private String lastName;
 	private int age;
+	private String email;
 	private String login;
 	private String pwd;
 
 	public UserModelBean() {
 	}
 
-	public UserModelBean(String lastname, String surname, int age,
-			String login, String pwd) {
-		this.lastname = lastname;
-		this.surname = surname;
+	public UserModelBean(String firstName, String lastName, int age,
+			String email, String login, String pwd) {
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.age = age;
+		this.email = email;
 		this.login = login;
 		this.pwd = pwd;
 	}
 
-	public String getLastname() {
-		return lastname;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getSurname() {
-		return surname;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setSurname(String surname) {
-		this.surname = surname;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public int getAge() {
@@ -43,6 +50,14 @@ public class UserModelBean implements Serializable {
 
 	public void setAge(int age) {
 		this.age = age;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getLogin() {
@@ -63,9 +78,9 @@ public class UserModelBean implements Serializable {
 
 	@Override
 	public String toString() {
-		return "[SURNAME]:" + this.getSurname() + ",[LASTNAME]:"
-				+ this.getLastname() + ",[AGE]:" + this.getAge() + ",[LOGIN]:"
-				+ this.getLogin() + ",[PWD]:" + this.getPwd();
+		return "UserModelBean [firstName=" + firstName + ", lastName=" + lastName + ", age=" + age + ", email=" + email
+				+ ", login=" + login + ", pwd=" + pwd + "]";
 	}
+	
 }
 
