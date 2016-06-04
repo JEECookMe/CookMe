@@ -11,7 +11,6 @@ import javax.faces.context.FacesContext;
 
 import cookMe.dao.fabric.DaoFabric;
 import cookMe.dao.instance.UserDao;
-import cookMe.model.LoggedUserCounter;
 import cookMe.model.LoginBean;
 import cookMe.model.UserModelBean;
 import cookMe.model.UserSubmissionModelBean;
@@ -20,9 +19,11 @@ import cookMe.model.UserSubmissionModelBean;
 @ApplicationScoped
 public class UserControlerBean {
 	private UserDao userDao;
+	public int loggedUserCounter;
 
 	public UserControlerBean() {
 		this.userDao = DaoFabric.getInstance().createUserDao();
+		loggedUserCounter = 0;
 	}
 
 	public String checkUser(LoginBean loginBean) {
@@ -32,6 +33,7 @@ public class UserControlerBean {
 			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 			Map<String, Object> sessionMap = externalContext.getSessionMap();
 			sessionMap.put("loggedUser", user);
+			loggedUserCounter++;
 			
 			return "userdisplay.xhtml";
 		} else {
@@ -64,4 +66,20 @@ public class UserControlerBean {
 			}
 		}
 	}
+	
+	public void logout() {
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		sessionMap.put("loggedUser", null);
+		loggedUserCounter--;
+	}
+
+	public int getLoggedUserCounter() {
+		return loggedUserCounter;
+	}
+
+	public void setLoggedUserCounter(int loggedUserCounter) {
+		this.loggedUserCounter = loggedUserCounter;
+	}
+	
 }

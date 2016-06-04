@@ -57,11 +57,16 @@
 					</ui:fragment>
 					<ui:fragment rendered="#{not empty loggedUser}">
 						<h:form>
-							<div>
+							<div class="headerEltForm">
 								<h:outputText value="Welcome #{loggedUser.login}" />
 							</div>
-							<div>
-								<h:outputText value="#{loggedUserCounter.count} connecté" />
+							<div class="headerEltForm">
+								<h:outputText value="#{userControlerBean.loggedUserCounter} connectés" />
+							</div>
+							<div class="headerEltForm">
+								<p:commandButton value="=>" action="#{userControlerBean.logout}" process="@form" update="@form">
+									<f:ajax execute="@form" />
+								</p:commandButton>
 							</div>
 						</h:form>
 					</ui:fragment>
