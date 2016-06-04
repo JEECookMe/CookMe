@@ -38,11 +38,9 @@ public class UserControlerBean {
 
 			FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Connexion", "Connexion réussie");
 	        FacesContext.getCurrentInstance().addMessage("msg", facesMsg);
-			//return "userdisplay.xhtml";
 		} else {
 			FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Echec de connexion", "Les identifiants saisies sont incorrects");
 	        FacesContext.getCurrentInstance().addMessage("msg", facesMsg);
-			//return "userLogin.xhtml";
 		}
 	}
 
