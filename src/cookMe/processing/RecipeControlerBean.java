@@ -1,33 +1,53 @@
 package cookMe.processing;
 
-import java.util.ArrayList;
-import java.util.Map;
+import cookMe.dao.fabric.DaoFabric;
+import cookMe.dao.instance.RecipesDao;
+import cookMe.model.RecipeModelBean;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-
-import cookMe.dao.fabric.DaoFabric;
-import cookMe.dao.instance.RecipesDao;
-import cookMe.model.RecipeListModelBean;
-import cookMe.model.RecipeModel;
-import cookMe.model.RecipeSubmissionModelBean;
+import java.util.List;
+import java.util.Map;
 
 @ManagedBean
 @ApplicationScoped
 public class RecipeControlerBean {
-	private boolean renderDone = false;
+    private RecipesDao recipesDao;
 
-	  @PostConstruct
-	  public void renderLotOfData() {
-	    renderDone = false;
-	    // do something which takes a long time here
-	    renderDone = true;
-	  }
+    public  RecipeControlerBean() {
+        this.recipesDao = DaoFabric.getInstance().createRecipesDao();
 
-	  public boolean isRenderDone() {
-	    return this.renderDone;
-	  }
+    }
+
+
+    public void delete(RecipeModelBean recipeModelBean) {
+        recipesDao.deleteRecipe(recipeModelBean.getId());
+
+    }
+
+    public List<RecipeModelBean> getAllRecipe() {
+        return recipesDao.getAllRecipes();
+
+
+    }
+
+    public void addDisplay() {
+        RecipeModelBean temp = new RecipeModelBean();
+        updateDisplay(temp);
+    }
+
+    public void displayRecipe(RecipeModelBean recipeModelBean) {
+        updateDisplay(recipeModelBean);
+
+    }
+
+    private void updateDisplay(RecipeModelBean recipeModelBean) {
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        Map<String, Object> sessionMap = externalContext.getSessionMap();
+
+        sessionMap.put("detailRecipe", recipeModelBean);
+    }
 }

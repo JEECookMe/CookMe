@@ -5,7 +5,7 @@ import javax.faces.bean.RequestScoped;
 
 @ManagedBean
 @RequestScoped
-public class RecipeSubmissionModelBean extends RecipeModel {
+public class RecipeSubmissionModelBean extends RecipeModelBean {
 	public RecipeSubmissionModelBean() {
 	}
 }

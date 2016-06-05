@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/template/admin/admin_hcf.xhtml">
+    <ui:define name="content">
+        <div id="adminMenu">
+            <h:panelGroup id="recipeGroup">
+                <div id="conteneurGauche">
+                    <h:form>
+                        <p:dataTable var="recipe" value="#{recipeControlerBean.allRecipe}">
+                            <p:column headerText="title">
+                                <h:outputText value="#{recipe.title}"/>
+                            </p:column>
+
+                            <p:column>
+                                <p:commandButton
+                                        action="#{recipeControlerBean.delete(recipe)}"
+                                        process="@form"
+                                        icon="ui-icon-closethick" validateClient="true" update="@all"/>
+
+                                <p:commandButton icon="ui-icon-pencil"
+                                                 action="#{recipeControlerBean.displayRecipe(recipe)}"
+                                                 update="panel">
+                                    <f:ajax execute="@form" render=":recipeGroup"/>
+                                </p:commandButton>
+                            </p:column>
+                        </p:dataTable>
+                        <p:commandButton action="#{recipeControlerBean.addDisplay}"  value="ADD" update="panel">
+
+                        </p:commandButton>
+                    </h:form>
+
+                </div>
+                <div id="conteneurDroit">
+                    <p:fieldset id="panel">
+                    <h:form>
+                    <p:growl showDetail="true"/>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel for="title" value="title:"/>
+                        <p:inputText id="title" placeholder="title"
+                                     value="#{detailRecipe.title}" required="true"
+                                     requiredMessage="title doit être renseigné">
+
+                        </p:inputText>
+                    </h:panelGrid>
+
+                    </h:form>
+                    </p:fieldset>
+
+
+                </div>
+            </h:panelGroup>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>
+

@@ -1,5 +1,6 @@
 package cookMe.dao.fabric;
 
+import cookMe.dao.instance.RecipesDao;
 import cookMe.dao.instance.UserDao;
 
 public final class DaoFabric {
@@ -47,9 +48,9 @@ public final class DaoFabric {
 		return userDao;
 	}
 
-	/*public RecipesDao createRecipesDao() {
+	public RecipesDao createRecipesDao() {
 		RecipesDao receipesDao = new RecipesDao(this.DB_HOST, this.DB_PORT,
 				this.DB_NAME, this.DB_USER, this.DB_PWD);
 		return receipesDao;
-	}*/
+	}
 }
