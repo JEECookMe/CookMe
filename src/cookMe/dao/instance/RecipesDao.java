@@ -1,11 +1,11 @@
-package step5.dao.instance;
+package cookMe.dao.instance;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import step5.model.RecipeModel;
-import step5.model.UserModelBean;
+import cookMe.model.RecipeModel;
+import cookMe.model.UserModelBean;
 
 public class RecipesDao {
 	private Connection connection;

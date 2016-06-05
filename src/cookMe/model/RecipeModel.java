@@ -1,4 +1,4 @@
-package step5.model;
+package cookMe.model;
 
 public class RecipeModel {
 	private String title;

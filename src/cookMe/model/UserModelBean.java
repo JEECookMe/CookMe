@@ -8,6 +8,7 @@ import javax.faces.bean.ApplicationScoped;
 @ManagedBean
 @ApplicationScoped
 public class UserModelBean implements Serializable {
+	private boolean admin;
 	private String firstName;
 	private String lastName;
 	private int age;
@@ -19,13 +20,14 @@ public class UserModelBean implements Serializable {
 	}
 
 	public UserModelBean(String firstName, String lastName, int age,
-			String email, String login, String pwd) {
+			String email, String login, String pwd, boolean admin) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.age = age;
 		this.email = email;
 		this.login = login;
 		this.pwd = pwd;
+		this.admin =admin;
 	}
 
 	public String getFirstName() {
@@ -76,10 +78,14 @@ public class UserModelBean implements Serializable {
 		this.pwd = pwd;
 	}
 
+	public boolean getAdmin(){return admin;}
+
+	public void setAdmin(boolean admin){this.admin=admin;}
+
 	@Override
 	public String toString() {
 		return "UserModelBean [firstName=" + firstName + ", lastName=" + lastName + ", age=" + age + ", email=" + email
-				+ ", login=" + login + ", pwd=" + pwd + "]";
+				+ ", login=" + login + ", pwd=" + pwd +"admin="+ admin +"]";
 	}
 	
 }

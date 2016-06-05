@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:ui="http://java.sun.com/jsf/facelets"
+             xmlns:h="http://java.sun.com/jsf/html"
+             xmlns:f="http://java.sun.com/jsf/core"
+             xmlns:p="http://primefaces.org/ui"
+             template="/template/admin/admin_hcf.xhtml">
+
+
+    <ui:define name="content">
+
+        <div id="formLogin">
+            <h:form>
+                <p:growl id="growlLogin" showDetail="true"/>
+                <div class="headerEltForm">
+                    <p:inputText id="headerEltLogin" placeholder="Login" value="#{loginBean.login}" required="true"
+                                 requiredMessage="Le champ login doit être renseigné">
+                        <f:validator validatorId="validator.login"/>
+                    </p:inputText>
+                    <p:tooltip for="headerEltLogin" value="autorisé [a-zA-Z0-9-._]" position="top"/>
+                    <p:message for="headerEltLogin" display="tooltip"/>
+                </div>
+                <div class="headerEltForm">
+                    <p:password id="headerEltPassword" placeholder="Password" value="#{loginBean.pwd}" required="true"
+                                requiredMessage="Le champ password doit être renseigné"/>
+                    <p:tooltip for="headerEltPassword" value="Entrez votre mot de passe" position="top"/>
+                </div>
+                <div class="headerEltForm">
+                    <p:commandButton value="Go" action="#{adminControlerBean.CheckAdmin(loginBean)}" >
+                    </p:commandButton>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

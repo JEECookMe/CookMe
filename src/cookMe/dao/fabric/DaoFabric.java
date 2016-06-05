@@ -1,6 +1,5 @@
 package cookMe.dao.fabric;
 
-import cookMe.dao.instance.RecipesDao;
 import cookMe.dao.instance.UserDao;
 
 public final class DaoFabric {
@@ -8,9 +7,9 @@ public final class DaoFabric {
 	private static volatile DaoFabric instance = null;
 	private static final String DB_HOST = "localhost";
 	private static final String DB_PORT = "3306";
-	private static final String DB_NAME = "jee";
+	private static final String DB_NAME = "CookMe";
 	private static final String DB_USER = "root";
-	private static final String DB_PWD = "admin";
+	private static final String DB_PWD = "";
 
 	private DaoFabric() {
 		super();

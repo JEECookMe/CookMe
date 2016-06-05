@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/template/admin/admin_hcf.xhtml">
+    <ui:define name="content">
+        <div id="adminMenu">
+        <h:form>
+            <div id="leftAdminButton">
+                <h:commandLink action="adminUserManager">
+                    <h:graphicImage library="images" name="manageUser.jpg" width="350" height="500"/>
+                </h:commandLink>
+            </div>
+            <div id="rightAdminButton">
+                <h:commandLink action="adminReceipeManager">
+                    <h:graphicImage library="images" name="manageReceipes.jpg" width="350" height="500"/>
+                </h:commandLink>
+            </div>
+        </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

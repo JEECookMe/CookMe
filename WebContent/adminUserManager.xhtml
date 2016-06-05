@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/template/admin/admin_hcf.xhtml">
+    <ui:define name="content">
+        <div id="adminMenu">
+            <h:panelGroup id="userGroup">
+                <div id="conteneurGauche">
+                    <h:form>
+                        <p:dataTable var="user" value="#{adminControlerBean.allUser}">
+                            <p:column headerText="Name">
+                                <h:outputText value="#{user.lastName}"/>
+                            </p:column>
+                            <p:column headerText="Login">
+                                <h:outputText value="#{user.login}"/>
+                            </p:column>
+                            <p:column headerText="Admin">
+                                <h:graphicImage value="resources/images/checkImage.png" rendered="#{user.admin}"/>
+                            </p:column>
+                            <p:column>
+                                <p:commandButton
+                                        action="#{adminControlerBean.Delete(user)}"
+                                        process="@form"
+                                        icon="ui-icon-closethick" validateClient="true" update="@all"/>
+
+                                <p:commandButton icon="ui-icon-pencil"
+                                                 action="#{adminControlerBean.displayUser(user)}"
+                                                 update="panel">
+                                    <f:ajax execute="@form" render=":userGroup"/>
+                                </p:commandButton>
+                            </p:column>
+                        </p:dataTable>
+                        <p:commandButton action="#{adminControlerBean.addDisplay}"  value="ADD" update="panel">
+
+                        </p:commandButton>
+                    </h:form>
+                </div>
+                <div id="conteneurDroit">
+                    <p:fieldset id="panel">
+                        <h:form>
+                            <p:growl showDetail="true"/>
+                            <h:panelGrid columns="2">
+                                <h:outputLabel for="firstName" value="First Name:"/>
+                                <p:inputText id="firstName" placeholder="First Name"
+                                             value="#{detailUser.firstName}" required="true"
+                                             requiredMessage="Le champ firstname doit être renseigné">
+                                    <f:validator validatorId="validator.firstname"/>
+                                </p:inputText>
+                                <p:tooltip for="firstName" value="autorisé [a-zA-Z0-9]" position="top"/>
+                                <p:message for="firstName" display="tooltip"/>
+
+                                <h:outputLabel for="lastName" value="Last Name:"/>
+                                <p:inputText id="lastName" placeholder="Last Name"
+                                             value="#{detailUser.lastName}" required="true"
+                                             requiredMessage="Le champ lastname doit être renseigné">
+                                    <f:validator validatorId="validator.lastname"/>
+                                </p:inputText>
+                                <p:tooltip for="lastName" value="autorisé [a-zA-Z0-9]" position="top"/>
+                                <p:message for="lastName" display="tooltip"/>
+
+                                <h:outputLabel for="age" value="Age:"/>
+                                <p:inputText id="age" placeholder="Age" value="#{detailUser.age}"
+                                             required="true"
+                                             requiredMessage="Le champ age doit être renseigné">
+                                    <f:validator validatorId="validator.age"/>
+                                </p:inputText>
+                                <p:tooltip for="age" value="uniquement des entiers &lt;100" position="top"/>
+                                <p:message for="age" display="tooltip"/>
+
+                                <h:outputLabel for="email" value="Email Address:"/>
+                                <p:inputText id="email" placeholder="Email Address" value="#{detailUser.email}"
+                                             required="true"
+                                             requiredMessage="Le champ email doit être renseigné">
+                                    <f:validator validatorId="validator.email"/>
+                                </p:inputText>
+                                <p:tooltip for="email" value="autorisé [a-zA-Z0-9-._]+@[a-zA-Z0-9-._].[a-z]+"
+                                           position="top"/>
+                                <p:message for="email" display="tooltip"/>
+
+                                <h:outputLabel for="login" value="Login:"/>
+                                <p:inputText id="login" placeholder="Login" value="#{detailUser.login}"
+                                             required="true"
+                                             requiredMessage="Le champ login doit être renseigné">
+                                    <f:validator validatorId="validator.login"/>
+                                </p:inputText>
+                                <p:tooltip for="login" value="autorisé [a-zA-Z0-9-._]" position="top"/>
+                                <p:message for="login" display="tooltip"/>
+
+                                <h:outputLabel for="password" value="Password:"/>
+                                <p:password id="password" placeholder="Password" feedback="true"
+                                            promptLabel="Entrez un mot de passe" weakLabel="Faible"
+                                            goodLabel="Moyen" strongLabel="Fort" inline="true"
+                                            value="#{detailUser.pwd}" required="true"
+                                            requiredMessage="Le champ password doit être renseigné">
+                                    <f:validator validatorId="validator.pwd"/>
+                                    <f:attribute name="confirmPassword" value="#{confirmPassword}"/>
+                                </p:password>
+                                <p:tooltip for="password" value="identique à Re-enter Password" position="top"/>
+                                <p:message for="password" display="tooltip"/>
+
+                                <h:outputLabel for="repassword" value="Re-enter Password:"/>
+                                <p:password id="repassword" placeholder="Re-enter Password"
+                                            value="#{detailUser.repwd}"
+                                            binding="#{confirmPassword}" required="true"
+                                            requiredMessage="Le champ re-password doit être renseigné"/>
+                                <p:tooltip for="repassword" value="identique à Password" position="top"/>
+                                <p:message for="repassword" display="tooltip"/>
+                                <p:outputLabel for="adminC" value="admin :"/>
+                                <p:selectBooleanButton id="adminC" value="#{ detailUser.admin}" onLabel=""
+                                                       offLabel=""
+                                                       style="width:60px"/>
+                                <p:commandButton value="Cancel" onclick="history.go(-1)"/>
+                                <p:commandButton value="Save"
+                                                 action="#{adminControlerBean.insertOrUpdate(detailUser)}"
+                                                 process="@form"
+                                                 validateClient="true" update="@all"/>
+
+
+                            </h:panelGrid>
+                        </h:form>
+                    </p:fieldset>
+
+                </div>
+            </h:panelGroup>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>
+

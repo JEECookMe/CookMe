@@ -1,6 +1,9 @@
 package cookMe.processing;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -35,6 +38,9 @@ public class UserControlerBean {
 			Map<String, Object> sessionMap = externalContext.getSessionMap();
 			sessionMap.put("loggedUser", user);
 			loggedUserCounter++;
+			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		    Date date = new Date();
+			externalContext.getApplicationMap().put("dateLastUserConnected",dateFormat.format( date));
 
 			FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Connexion", "Connexion réussie");
 	        FacesContext.getCurrentInstance().addMessage("msg", facesMsg);
@@ -86,5 +92,5 @@ public class UserControlerBean {
 	public void setLoggedUserCounter(int loggedUserCounter) {
 		this.loggedUserCounter = loggedUserCounter;
 	}
-	
+
 }

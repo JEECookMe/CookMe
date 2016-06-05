@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsf/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:body>
+    <ui:composition>
+        <div id="header">
+            <div id="headerAdminLeft">
+                <h:graphicImage library="images" name="administrationTitle.png" width="200"/>
+            </div>
+            <div id="headerAdminCenter">
+                <h:panelGroup rendered="#{not empty dateLastUserConnected and not empty loggedAdmin}">
+                    <h:form>
+                        <p:growl id="growlLogin" showDetail="true"/>
+                        <div>
+                            <h:outputText value="last connection #{dateLastUserConnected}"/>
+                        </div>
+                    </h:form>
+                </h:panelGroup>
+            </div>
+
+            <div id="headerAdminRight">
+
+                <h:panelGroup rendered="#{not empty loggedAdmin}">
+                    <h:form>
+                        <p:growl id="growlLogin" showDetail="true"/>
+                        <div>
+                            <h:outputText value="Welcome #{loggedAdmin.login}"/>
+                        </div>
+                    </h:form>
+                </h:panelGroup>
+            </div>
+        </div>
+    </ui:composition>
+</h:body>
+</html>

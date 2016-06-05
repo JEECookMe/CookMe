@@ -1,4 +1,4 @@
-package step5.model;
+package cookMe.model;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;

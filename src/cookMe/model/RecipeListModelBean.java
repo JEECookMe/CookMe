@@ -1,4 +1,4 @@
-package step5.model;
+package cookMe.model;
 
 import java.util.ArrayList;
 import java.util.List;

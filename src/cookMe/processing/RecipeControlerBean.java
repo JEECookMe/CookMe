@@ -1,4 +1,4 @@
-package step5.processing;
+package cookMe.processing;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -9,11 +9,11 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
-import step5.dao.fabric.DaoFabric;
-import step5.dao.instance.RecipesDao;
-import step5.model.RecipeListModelBean;
-import step5.model.RecipeModel;
-import step5.model.RecipeSubmissionModelBean;
+import cookMe.dao.fabric.DaoFabric;
+import cookMe.dao.instance.RecipesDao;
+import cookMe.model.RecipeListModelBean;
+import cookMe.model.RecipeModel;
+import cookMe.model.RecipeSubmissionModelBean;
 
 @ManagedBean
 @ApplicationScoped

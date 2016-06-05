@@ -12,10 +12,12 @@ public class UserSubmissionModelBean extends UserModelBean {
 	public UserSubmissionModelBean() {
 	}
 	
-	public UserSubmissionModelBean(String firstname, String lastname, int age, String email, String login, String pwd, String repwd) {
-        super(firstname, lastname, age, email, login, pwd);
+	public UserSubmissionModelBean(String firstname, String lastname, int age, String email, String login, String pwd, String repwd, boolean admin) {
+        super(firstname, lastname, age, email, login, pwd, admin);
         this.repwd = repwd;
     }
+
+
 
 	public String getRepwd() {
 		return repwd;
